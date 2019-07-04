@@ -3,9 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apisauce": "^1.0.3",
+    "autodux": "^5.0.1",
+    "axios": "^0.19.0",
+    "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "redux": "^4.0.1",
+    "redux-saga": "^1.0.5",
+    "semantic-ui-react": "^0.87.2"
   },
   "scripts": {
     "start": "react-scripts start",
