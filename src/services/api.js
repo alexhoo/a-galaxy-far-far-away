@@ -15,6 +15,10 @@ const api = create({
 const getPath = when(x => /^(?!\/)/.test(x), fconcat(baseUrl + '/'))
 
 const get = (path, params, config) => {
+  // console.log("TCL: get -> config", config)
+  // console.log("TCL: get -> params", params)
+  // console.log("TCL: get -> path", path)
+  
   return api.get(getPath(path), params, config)
 }
 

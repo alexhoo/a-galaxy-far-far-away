@@ -1,6 +1,6 @@
 /* Global imports */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import Root from './containers';
 
@@ -9,7 +9,7 @@ import store from './store';
 
 /* Component definition */
 
-const App = props => <Provider store={store}><Root /></Provider>;
+const App = () => <Provider store={store}><Root /></Provider>;
 
 /* PropTypes */
 App.propTypes = {};

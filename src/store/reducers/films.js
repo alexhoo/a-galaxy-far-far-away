@@ -20,6 +20,7 @@ export const {
     getList,
   },
 } = autodux({
+  
   // No need to implement switching logic -- it's
   // done for you.
   actions: {
@@ -27,11 +28,11 @@ export const {
     failureList:   (state) => ({ ...state, fetching: false, error: true }),
     requestDetail: (state) => ({ ...state, fetching: true }),
     requestList:   (state) => ({ ...state, fetching: true, error: false }),
-    successDetail: (state, product) => ({
+    successDetail: (state, film) => ({
       ...state,
-      current:  product._id,
+      current:  film._id,
       fetching: false,
-      list:     updateProduct(state.list, product),
+      list:     updateItemList(state.list, film),
     }),
     successList: (state, list) => ({ ...state, fetching: false, list, error: false }),
   },
@@ -54,10 +55,10 @@ export const {
   slice: 'films',
 })
 
-const updateProduct = (list, product) => {
+const updateItemList = (list, film) => {
   const update = p => (dest, el) => dest.concat([el._id === p._id ? p : el])
 
   const elemSatisfies = (pred, list) => list.findIndex(pred) > -1
 
-  return elemSatisfies(propEq('_id', product._id), list) ? list.reduce(update(product), []) : [product]
+  return elemSatisfies(propEq('_id', film._id), list) ? list.reduce(update(film), []) : [film]
 }
