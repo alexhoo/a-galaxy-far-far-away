@@ -1,0 +1,43 @@
+{
+    "extends": [
+      "react-app"
+    ],
+    "plugins": [
+      "react-hooks"
+    ],
+    "rules": {
+      "comma-dangle": ["warn", {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "never",
+        "functions": "ignore"
+      }],
+      "key-spacing": ["warn", {
+        "beforeColon": false,
+        "afterColon": true,
+        "mode": "strict",
+        "align": "value"
+      }],
+      "padding-line-between-statements": [
+        "error",
+        { "blankLine": "always", "prev": "*", "next": "return" },
+        { "blankLine": "always", "prev": "*", "next": "if" },
+        { "blankLine": "always", "prev": "if", "next": "*" }
+      ],
+      "react/jsx-curly-spacing": ["warn", { "when": "never", "children": { "when": "always" } }],
+      "react/jsx-tag-spacing": ["warn", { "beforeSelfClosing": "always" }],
+      "no-else-return": ["error"],
+      "no-unused-vars": ["error", { "args": "after-used" }],
+      "sort-keys": ["warn", "asc", {"caseSensitive": true, "natural": false}],
+      "space-before-function-paren": ["error", "never"],
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn"
+    },
+    "settings": {
+        "react": {
+            "version": "16.8.6"
+        }
+    }
+  }
+  

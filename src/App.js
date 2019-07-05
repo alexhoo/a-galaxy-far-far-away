@@ -1,26 +1,22 @@
+/* Global imports */
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
+import Root from './containers';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+/* Local imports */
+import store from './store';
+
+/* Component definition */
+
+const App = () => <Provider store={store}><Root /></Provider>;
+
+/* PropTypes */
+App.propTypes = {};
+App.defaultProps = {};
+
+/* Local utility functions */
+
+/* Styles */
 
 export default App;
