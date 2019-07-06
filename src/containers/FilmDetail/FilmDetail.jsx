@@ -18,14 +18,14 @@ const FilmDetail = ({ getFilmById, addVisit, filmDetail, match, loading }) => {
   useEffect(() => {
     getFilmById(id);
     
-  }, []);
+  }, [getFilmById, id]);
   
   useEffect( ()=> {
      if (filmDetail){
         addVisit({ title: filmDetail.title, url: filmDetail.url  })
      } 
    
-  }, [filmDetail])
+  }, [addVisit, filmDetail])
 
   return loading || !filmDetail ? (
     <Loader size="big" active />

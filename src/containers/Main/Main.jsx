@@ -28,11 +28,11 @@ const Main = props => {
     if (debouncedQuery) {
       getFilms({ search: debouncedQuery });
     }
-  }, [debouncedQuery]);
+  }, [debouncedQuery, getFilms]);
 
   useEffect(() => {
     getPeople();
-  }, []);
+  }, [getPeople]);
 
   return (
     <Wrapper>
