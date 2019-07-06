@@ -10,6 +10,9 @@ export default function * () {
       require('Reducers/films').requestDetail.type,
       require('./films').getFilmDetail
     ),
-	
+    takeLatest(
+      require('Reducers/people').requestList.type,
+      require('./people').getPeople
+    ),	
 	])
 }

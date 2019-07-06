@@ -6,8 +6,9 @@ import PropTypes from "prop-types";
 import Film from "Components/Film/Film";
 import { Card, Loader } from "semantic-ui-react";
 
-  /* Component definition */
+/* Component definition */
 const SearchResults = ({ results, loading }) => {
+  
   return loading ? <Loader size="big" active /> : (
     <Card.Group>
       { displayFilms(results) }
