@@ -29,7 +29,9 @@ const CharacterCard = ({ character }) => {
 };
 
 /* PropTypes */
-CharacterCard.propTypes = {};
+CharacterCard.propTypes = {
+  character: PropTypes.object,
+};
 CharacterCard.defaultProps = {};
 
 /* Local utility functions */

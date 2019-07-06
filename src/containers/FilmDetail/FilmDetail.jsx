@@ -11,12 +11,21 @@ import { filmDetailProps } from 'Definitions/types'
 import { integerToRoman } from 'Utils'
 
 /* Component definition */
-const FilmDetail = ({ getFilmById, filmDetail, match, loading }) => {
-  const { id } = match.params;
-
+const FilmDetail = ({ getFilmById, addVisit, filmDetail, match, loading }) => {
+  const { params } = match
+  const { id } = params;
+  
   useEffect(() => {
     getFilmById(id);
-  }, [getFilmById, id]);
+    
+  }, []);
+  
+  useEffect( ()=> {
+     if (filmDetail){
+        addVisit({ title: filmDetail.title, url: filmDetail.url  })
+     } 
+   
+  }, [filmDetail])
 
   return loading || !filmDetail ? (
     <Loader size="big" active />

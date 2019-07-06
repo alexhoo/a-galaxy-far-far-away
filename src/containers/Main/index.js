@@ -16,6 +16,10 @@ import {
 	getFetching as getPeopleListFetching,
 } from 'Reducers/people'
 
+import {
+	getList as getVisitList
+} from 'Reducers/visits'
+
 import Main from './Main.jsx'
 
 /* Local utility functions */
@@ -25,6 +29,7 @@ const mapStateToProps = state => ({
 	loading:       getFilmListFetching(state),
 	loadingPeople: getPeopleListFetching(state),
 	people:        getPeopleList(state),
+	visits:        getVisitList(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({

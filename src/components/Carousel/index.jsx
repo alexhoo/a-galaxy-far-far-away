@@ -4,31 +4,34 @@ import PropTypes from "prop-types";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { Loader } from "semantic-ui-react";
+import { defaultTo } from 'ramda'
+
 
 /* Local imports */
 import CharacterCard from "Components/CharacterCard";
+import { isNotEmpty } from 'Utils'
 
 /* Component definition */
 const responsive = {
-  0: { items: 1 },
-  1024: { items: 3 }
+  0:    { items: 1 },
+  1200: { items: 3 },
+  1440: { items: 4 },
+  700:  { items: 2 },
 };
 const Carousel = ({ people, loading }) => {
-  const [parsedPeople, setParsedPeople] = useState(people);
+  const [parsedPeople, setParsedPeople] = useState(defaultTo([], people));
 
   useEffect(() => {
-    if (people) {
+    if (isNotEmpty(people)) {
       const parsePeople = people.map((p, i) => (
-        <CharacterCard 
-            key={i} 
-            character={p} 
-        />
+        <CharacterCard key={i} character={p} />
       ));
 
       setParsedPeople(parsePeople);
     }
   }, [people]);
-
+  
+  
   return loading ? (
     <Loader size="small" active />
   ) : (
@@ -47,11 +50,15 @@ const Carousel = ({ people, loading }) => {
 };
 
 /* PropTypes */
-Carousel.propTypes = {};
+Carousel.propTypes = {
+    loading: PropTypes.bool,
+    people:  PropTypes.arrayOf(PropTypes.object),
+    
+};
 Carousel.defaultProps = {};
 
 /* Local utility functions */
 
 /* Styles */
 
-export default Carousel;
+export default React.memo(Carousel);
