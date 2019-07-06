@@ -1,16 +1,16 @@
 import { 
-    concat, 
-    curry, 
-    flip, 
-    head, 
-    pipe, 
-    splitAt,
-    match,
+    always,
+    compose, complement, concat, curry, 
     defaultTo,
-    flatten,
+    either,
+    flatten, flip, 
+    head, 
+    ifElse, includes, isEmpty, isNil,
     last,
-    split,
-    map,
+    map, match,
+    pipe, 
+    split, splitAt,
+    uniq,
  } from "ramda";
 
 const fconcat = flip(concat);
@@ -56,3 +56,12 @@ export const integerToRoman = integer => {
         return toRoman.toString();
     }
   };
+
+const colors = ["red","orange","yellow","olive","green","teal","blue","violet","purple","pink","brown","grey","black"]
+const predicate = (input) => colors => includes(input, colors)
+
+export const getColor = input => ifElse(predicate(input), always(input), always('blue'))(colors)
+export const addToArray = visit => compose(uniq, concat([visit])) 
+
+export const isEmptyOrNull = either(isEmpty, isNil)
+export const isNotEmpty = complement(isEmptyOrNull)

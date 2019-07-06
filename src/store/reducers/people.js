@@ -5,15 +5,11 @@ export const {
   initial,
   slice,
   actions: {
-    failureDetail,
     failureList,
-    requestDetail,
     requestList,
-    successDetail,
     successList,
   },
   selectors: {
-    getCurrent,
     getError,
     getFetching,
     getList,
@@ -23,21 +19,13 @@ export const {
   // No need to implement switching logic -- it's
   // done for you.
   actions: {
-    failureDetail: (state) => ({ ...state, fetching: false }),
-    failureList:   (state) => ({ ...state, error: true, fetching: false }),
-    requestDetail: (state) => ({ ...state, fetching: true }),
-    requestList:   (state) => ({ ...state, error: false, fetching: true }),
-    successDetail: (state, film) => ({
-      ...state,
-      current:  film,
-      fetching: false,
-    }),
+    failureList: (state) => ({ ...state, error: true, fetching: false }),
+    requestList: (state) => ({ ...state, error: false, fetching: true }),
     successList: (state, list) => ({ ...state, error: false, fetching: false, list }),
   },
 
   // The initial value of your reducer state
   initial: {
-    current:  null,
     error:    false,
     fetching: false,
     list:     [],
@@ -49,5 +37,5 @@ export const {
   },
 
   // the slice of state your reducer controls
-  slice: 'films',
+  slice: 'people',
 })

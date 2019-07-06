@@ -9,7 +9,9 @@ import {
   requestDetail as requestFilmDetail,
   getFetching as getCurrentFilmDetailLoading,
 } from "Reducers/films";
-
+import {
+  addItem as addVisit,
+} from "Reducers/visits";
 import FilmDetail from "./FilmDetail.jsx";
 
 /* Local utility functions */
@@ -21,6 +23,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getFilmById: id => dispatch(requestFilmDetail(id)),
+  addVisit: url => dispatch(addVisit(url))
 });
 /* Styles */
 

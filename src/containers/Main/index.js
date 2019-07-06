@@ -9,17 +9,32 @@ import {
 	getList as getFilmList,
 	getFetching as getFilmListFetching,
 } from 'Reducers/films'
+
+import { 
+	requestList as requestPeopleList,
+	getList as getPeopleList,
+	getFetching as getPeopleListFetching,
+} from 'Reducers/people'
+
+import {
+	getList as getVisitList
+} from 'Reducers/visits'
+
 import Main from './Main.jsx'
 
 /* Local utility functions */
 
 const mapStateToProps = state => ({
-	films: 	 getFilmList(state),
-	loading: getFilmListFetching(state),
+	films: 	       getFilmList(state),
+	loading:       getFilmListFetching(state),
+	loadingPeople: getPeopleListFetching(state),
+	people:        getPeopleList(state),
+	visits:        getVisitList(state)
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	getFilms: (params) => dispatch(requestFilmsList(params)),
+	getFilms:  (params) => dispatch(requestFilmsList(params)),
+	getPeople: () => dispatch(requestPeopleList()),
 })
 /* Styles */
 
