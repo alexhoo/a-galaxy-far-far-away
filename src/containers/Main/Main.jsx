@@ -1,10 +1,14 @@
 /* Global imports */
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Grid, Search } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
+import { Input } from 'semantic-ui-react'
+
+/* hooks */
+import useDebounce from 'Hooks/useDebounce';
 
 /* Local imports */
-import useDebounce from 'Hooks/useDebounce';
+import SearchResults from 'Components/SearchResults';
 import StarWarHeader from "Components/StarWarHeader";
 
 /* Component definition */
@@ -15,12 +19,13 @@ const Main = props => {
   const debouncedQuery = useDebounce(querySearch, 500)
   
   useEffect(() => {
+    
     if (debouncedQuery){
       
       props.getFilms({ search: debouncedQuery } )
     }
     
-	}, [debouncedQuery, props]);
+	}, [debouncedQuery]);
 
   return (
     <Grid container columns="1">
@@ -31,15 +36,18 @@ const Main = props => {
       </Grid.Row>
       <Grid.Row>
         <Grid.Column>
-          <Search
-            loading={loading}
-            onResultSelect={() => null}
-            onSearchChange={(ev, input) => setQuerySearch(input.value)}
-            results={films}
-            size="massive"
-            value={querySearch}
-            fluid={false}
-          />
+          <Input icon='search' 
+                 fluid
+                 placeholder='Search...' 
+                 loading={loading}
+                 iconPosition='left'
+                 onChange={(ev, input) => setQuerySearch(input.value)}/>
+        
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Column>
+          <SearchResults results={films} loading={loading}/>
         </Grid.Column>
       </Grid.Row>
     </Grid>

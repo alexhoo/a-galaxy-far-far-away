@@ -1,5 +1,4 @@
 import autodux from 'autodux'
-import { propEq, find } from 'crocks'
 
 export const {
   reducer,
@@ -25,40 +24,40 @@ export const {
   // done for you.
   actions: {
     failureDetail: (state) => ({ ...state, fetching: false }),
-    failureList:   (state) => ({ ...state, fetching: false, error: true }),
+    failureList:   (state) => ({ ...state, error: true, fetching: false }),
     requestDetail: (state) => ({ ...state, fetching: true }),
-    requestList:   (state) => ({ ...state, fetching: true, error: false }),
+    requestList:   (state) => ({ ...state, error: false, fetching: true }),
     successDetail: (state, film) => ({
       ...state,
-      current:  film._id,
+      current:  film,
       fetching: false,
-      list:     updateItemList(state.list, film),
     }),
-    successList: (state, list) => ({ ...state, fetching: false, list, error: false }),
+    successList: (state, list) => ({ ...state, error: false, fetching: false, list }),
   },
 
   // The initial value of your reducer state
   initial: {
-    current:  0,
+    current:  null,
     error:    false,
     fetching: false,
     list:     [],
+
   },
 
   // No need to select the state slice -- it's done for you.
   selectors: {
-    getCurrent: ({ current, list }) =>
-      find(propEq('_id', current), list).option(null),
+    /*getCurrent: ({ current, list }) =>
+      find(propEq('_id', current), list).option(null),*/
   },
 
   // the slice of state your reducer controls
   slice: 'films',
 })
 
-const updateItemList = (list, film) => {
-  const update = p => (dest, el) => dest.concat([el._id === p._id ? p : el])
+// const updateItemList = (list, film) => {
+//   const update = p => (dest, el) => dest.concat([el._id === p._id ? p : el])
 
-  const elemSatisfies = (pred, list) => list.findIndex(pred) > -1
+//   const elemSatisfies = (pred, list) => list.findIndex(pred) > -1
 
-  return elemSatisfies(propEq('_id', film._id), list) ? list.reduce(update(film), []) : [film]
-}
+//   return elemSatisfies(propEq('_id', film._id), list) ? list.reduce(update(film), []) : [film]
+// }

@@ -1,31 +1,58 @@
-import { curry, apply } from 'ramda';
+import { 
+    concat, 
+    curry, 
+    flip, 
+    head, 
+    pipe, 
+    splitAt,
+    match,
+    defaultTo,
+    flatten,
+    last,
+    split,
+    map,
+ } from "ramda";
 
-const debounce_ = curry((timeMs, fn) => () => {
-console.log("TCL: fn", fn)
-console.log("TCL: timeMs", timeMs)
+const fconcat = flip(concat);
 
-	let timeout;
+// truncate :: Number -> String -> String
+export const truncate = curry((length, content) =>
+  pipe(
+    splitAt(length),
+    head,
+    fconcat("...")
+  )(content)
+);
 
-	return (...args) => {
-        
-        const later = () => {
-			timeout = null;
+// getIdFromUrl :: String -> String
+export const getIdFromFilmUrl = pipe(
+  match(/films\/[0-9]*/gi),
+  map(split("/")),
+  flatten,
+  last
+);
 
-            
-				apply(fn, args);
-			
-		};
+// integerToRoman :: Number -> String
+export const integerToRoman = integer => {
 
-		const callNow = !timeout;
-		clearTimeout(timeout);
-		timeout = setTimeout(later, timeMs);
-
-		if (callNow) {
-			apply(fn, args);
-		}
-
-		return timeout;
-	};
-});
-
-export const debounce = debounce_;
+    const toRoman = defaultTo(0, integer)
+  
+    switch (toRoman) {
+      case 1:
+        return "I";
+      case 2:
+        return "II";
+      case 3:
+        return "III";
+      case 4:
+        return "IV";
+      case 5:
+        return "V";
+      case 6:
+        return "VI";
+      case 7:
+        return "VII";
+      default:
+        return toRoman.toString();
+    }
+  };

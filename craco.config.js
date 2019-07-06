@@ -32,6 +32,7 @@ module.exports = {
       '../../theme.config$': require('path').join(__dirname, '/src/semantic-ui/theme.config'),
       Components:            path.resolve(__dirname,'src/components'),
       Containers:            path.resolve(__dirname,'src/containers'),
+      Definitions:           path.resolve(__dirname, 'src/definitions'),
       Hooks:                 path.resolve(__dirname, 'src/hooks'),
       Reducers:              path.resolve(__dirname, 'src/store/reducers'),
       Sagas:                 path.resolve(__dirname, 'src/store/sagas'),

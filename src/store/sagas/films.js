@@ -1,6 +1,11 @@
 import { put } from 'redux-saga/effects'
 
-import { successList, failureList } from 'Reducers/films'
+import { 
+    failureDetail,
+    failureList,
+    successDetail,
+    successList, 
+ } from 'Reducers/films'
 import create from 'Services/api'
 
 const api = create('films')
@@ -22,3 +27,18 @@ export function * getFilms({ payload = {} }) {
         yield put(failureList(e))
     }
 }
+
+export function * getFilmDetail({ payload: id }) {
+    try {
+      const response = yield api.getOne(id, { })
+  
+      if (response.ok) {
+        const { data } = response
+        yield put(successDetail(data))
+      } else {
+        yield put(failureDetail(response.originalError))
+      }
+    } catch (e) {
+      yield put(failureDetail(e))
+    }
+  }
