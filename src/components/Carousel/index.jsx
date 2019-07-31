@@ -4,8 +4,6 @@ import PropTypes from "prop-types";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import { Loader } from "semantic-ui-react";
-import { defaultTo } from 'ramda'
-
 
 /* Local imports */
 import CharacterCard from "Components/CharacterCard";
@@ -19,13 +17,13 @@ const responsive = {
   700:  { items: 2 },
 };
 const Carousel = ({ people, loading }) => {
-  const [parsedPeople, setParsedPeople] = useState(defaultTo([], people));
+  const [parsedPeople, setParsedPeople] = useState();
 
   useEffect(() => {
     if (isNotEmpty(people)) {
       const parsePeople = people.map((p, i) => (
         <CharacterCard key={i} character={p} />
-      ));
+      ))
 
       setParsedPeople(parsePeople);
     }

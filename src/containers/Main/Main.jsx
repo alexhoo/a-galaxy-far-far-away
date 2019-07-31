@@ -1,5 +1,5 @@
 /* Global imports */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import { Sidebar, Grid, Icon, Button } from "semantic-ui-react";
 import { Input } from "semantic-ui-react";
@@ -21,6 +21,11 @@ const Main = props => {
   const { getFilms, getPeople, loading, films, loadingPeople, people } = props;
   const [querySearch, setQuerySearch] = useState("");
   const [visible, setVisible] = useState(false);
+  
+  const getPeopleCallback = useCallback(
+    () => {
+      return getPeople()
+    },[getPeople])
 
   const debouncedQuery = useDebounce(querySearch, 500);
 
@@ -31,8 +36,8 @@ const Main = props => {
   }, [debouncedQuery, getFilms]);
 
   useEffect(() => {
-    getPeople();
-  }, [getPeople]);
+    getPeopleCallback();
+  }, [getPeopleCallback]);
 
   return (
     <Wrapper>

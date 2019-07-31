@@ -984,6 +984,14 @@
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
 
+"@phenax/redux-utils@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@phenax/redux-utils/-/redux-utils-0.0.6.tgz#7a60fd52b99adda3de46b6ace296fdc30b6ed598"
+  integrity sha512-5Kx48iz43DXNusB8yP6EPeLJi+gWNoCsiDbIK69RGaEmvqGMiRenwVX+Gvr9ly07Lfs+mIumz1RaKQZD1YqtYw==
+  optionalDependencies:
+    crocks "^0.11.1"
+    redux-saga "^0.16.2"
+
 "@redux-saga/core@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@redux-saga/core/-/core-1.0.3.tgz#c29ec7ae3d7dfcbcb8dc93177f2b3edc798c5d85"
@@ -2526,6 +2534,11 @@ create-react-context@<=0.2.2:
   dependencies:
     fbjs "^0.8.0"
     gud "^1.0.0"
+
+crocks@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/crocks/-/crocks-0.11.1.tgz#58a59e0a565258ece048540f6f287525e129f08c"
+  integrity sha512-MSaMHvzKugK4iX97VzUty+bdhDN+3MVfGrllye/P7qKGeHnRU7/ich+j0YzIN3SP4cEIFnQplTuAat0c1pLiCg==
 
 crocks@^0.12.1:
   version "0.12.1"
@@ -7346,6 +7359,11 @@ recursive-readdir@2.2.2:
   resolved "https://registry.yarnpkg.com/recursive-readdir/-/recursive-readdir-2.2.2.tgz#9946fb3274e1628de6e36b2f6714953b4845094f"
   dependencies:
     minimatch "3.0.4"
+
+redux-saga@^0.16.2:
+  version "0.16.2"
+  resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-0.16.2.tgz#993662e86bc945d8509ac2b8daba3a8c615cc971"
+  integrity sha512-iIjKnRThI5sKPEASpUvySemjzwqwI13e3qP7oLub+FycCRDysLSAOwt958niZW6LhxfmS6Qm1BzbU70w/Koc4w==
 
 redux-saga@^1.0.5:
   version "1.0.5"
